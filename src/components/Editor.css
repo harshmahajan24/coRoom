@@ -1,0 +1,283 @@
+/* src/components/Editor.css var(--bg-secondary) */
+:root {
+  --bg-primary: #000000;    /* Pitch Black  Workspace Base */
+  --bg-secondary: #050505;  /* Jet Black Panel Sections */
+  --bg-tertiary: #ff8b06;   /* Hover / Selection States */
+  --accent-color: #ffffff;  /* High Contrast Stark White Accent */
+  --accent-glow: rgba(255, 255, 255, 0.15);
+  --text-main: #ffffff;
+  --text-muted: #ffffff;
+  --border-color: #ffffff;  /* Super thin crisp borders */
+  --error-color: #ffffff;   /* Keep clean white on red layout blocks */
+}
+
+.editor-container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background-color: var(--bg-primary);
+  color: var(--text-main);
+  overflow: hidden;
+}
+
+.editor-toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.75rem 1.5rem;
+  background-color: var(--bg-secondary);
+  border-bottom: 1px solid var(--border-color);
+  z-index: 10;
+  gap: 1rem;
+}
+
+.language-selector {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.language-selector label {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: #ffffff;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.lang-buttons {
+  display: flex;
+  background-color: #ff8b06;
+  padding: 0.25rem;
+  border-radius: 6px;
+  border: 1px solid var(--border-color);
+  gap: 2px;
+}
+
+.lang-btn {
+  background: none;
+  border: none;
+  color: #000000;
+  padding: 0.4rem 0.85rem;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.8rem;
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+
+.lang-btn.active {
+  color: var(--bg-primary);
+  background-color: var(--accent-color); 
+  box-shadow: 0 0 10px var(--accent-glow);
+}
+
+.lang-btn.disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+.run-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background-color: #ff8b06;
+  border: 1px solid var(--accent-color);
+  color: var(--bg-primary);
+  padding: 0.5rem 1.25rem;
+  border-radius: 6px;
+  font-weight: 700;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.run-btn:hover:not(:disabled) {
+  background-color: var(--bg-primary);
+  color: var(--accent-color);
+}
+
+.layout-toggle-btn {
+  background: var(--bg-tertiary);
+  border: 1px solid var(--border-color);
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  padding: 0.4rem 0.65rem;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.layout-toggle-btn.active {
+  color: var(--text-main);
+  background: var(--bg-primary);
+  border-color: #444444;
+}
+
+/* --- MAIN WORKSPACE SPLITS --- */
+.editor-main {
+  display: flex;
+  flex: 1;
+  height: calc(100vh - 55px);
+  width: 100vw;
+  overflow: hidden;
+}
+
+.members-sidebar, .output-panel {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--bg-secondary);
+  overflow: hidden;
+}
+
+.members-sidebar { border-right: 1px solid var(--border-color); }
+.output-panel { border-left: 1px solid var(--border-color); }
+
+.members-sidebar.expanded { width: 240px; min-width: 240px; }
+.members-sidebar.collapsed { width: 0px; min-width: 0px; border-right: none; }
+
+.output-panel.expanded { width: 380px; min-width: 380px; }
+.output-panel.collapsed { width: 0px; min-width: 0px; border-left: none; }
+
+.editor-panel {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--bg-primary);
+  height: calc(100vh - 55px); 
+}
+
+.panel-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 1.25rem;
+  background-color: var(--bg-secondary);
+  border-bottom: 1px solid var(--border-color);
+  height: 40px;
+}
+
+.panel-header h3 {
+  margin: 0;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--text-muted);
+}
+
+.members-list-wrapper {
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  overflow-y: auto;
+}
+
+.member-item-card {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 0.75rem;
+  border-radius: 6px;
+  border: 1px solid #111111 !important;
+  background-color: #0b0b0b !important;
+}
+
+.member-item-name {
+  font-size: 0.8rem;
+  color: #ffffff;
+}
+
+.editor-wrapper {
+  flex: 1;
+  width: 100%;
+  position: relative;
+  overflow: hidden; 
+}
+
+.output-content {
+  flex: 1;
+  padding: 1.25rem;
+  font-family: 'Fira Code', monospace;
+  font-size: 0.85rem;
+  overflow-y: auto;
+  background-color: #000000;
+}
+
+.output-text {
+  margin: 0;
+  white-space: pre-wrap;
+  color: #ffffff; 
+}
+
+.output-error {
+  color: #ffffff;
+  background-color: #111111;
+  padding: 0.75rem 1rem;
+  border-radius: 6px;
+  border: 1px solid #ff3333; 
+  font-size: 0.85rem;
+}
+
+.output-placeholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  color: var(--text-muted);
+  gap: 0.25rem;
+}
+
+/* CodeMirror Engine Layout Edge Pins */
+.cm-editor {
+  position: absolute !important;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100% !important;
+  background-color: #000000 !important;
+}
+
+.cm-scroller {
+  overflow: auto !important; /* FIXED: Enables mouse wheel and scrolling trackpad events */
+  height: 100% !important;
+}
+
+/* Keep all your original Editor.css styles perfectly intact above this line */
+
+.editor-panel {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--bg-primary);
+  height: calc(100vh - 75px); 
+}
+
+.editor-wrapper {
+  flex: 1;
+  width: 100%;
+  position: relative;
+  overflow: hidden; 
+}
+
+.cm-editor {
+  position: absolute !important;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100% !important;
+  background-color: #000000 !important;
+}
+
+.cm-scroller {
+  overflow: auto !important; /* Forces layout scrolling engine back online */
+  height: 100% !important;
+}

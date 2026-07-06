@@ -1,64 +1,414 @@
-.App {
-  text-align: center;
+/* src/App.css */
+
+/* Reset and Layout Base defaults */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-.App-logo {
-  height: 40vmin;
+body {
+  margin: 0;
+  background-color: #000000; /* Deep Absolute Black */
+  color: #ffffff;            /* Stark White */
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow: hidden;
+}
+
+/* --- MONOCHROME ONBOARDING GATE --- */
+.auth-outer-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  width: 100vw;
+  background-color: #000000;
+  overflow: hidden;
+  padding: 1.5rem;
+}
+
+/* Clean, sharp monochromatic ambient flow instead of neon colors */
+.background-glows {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
   pointer-events: none;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.glow {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(140px);
+  opacity: 0.08;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.glow-1 {
+  width: 500px;
+  height: 500px;
+  background-color: #ffffff;
+  top: -10%;
+  left: -10%;
+}
+
+.glow-2 {
+  width: 400px;
+  height: 400px;
+  background-color: #ffffff;
+  bottom: -5%;
+  right: -5%;
+}
+
+.auth-card {
   display: flex;
   flex-direction: column;
   align-items: center;
+  position: relative;
+  z-index: 10;
+  width: 100%;
+  max-width: 440px;
+  background-color: #0a0a0a; /* Ultra Dark Grey Card */
+  border: 1px solid #f7f7f7;  /* Subtle Minimalist Border */
+  border-radius: 12px;
+  padding: 2.5rem;
+}
+
+.auth-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.logo-icon {
+  display: flex;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  width: 100%;
 }
 
-.App-link {
-  color: #61dafb;
+.logo-icon img {
+  width: 100%;
+  max-width: 200px;
+  height: auto;
+  object-fit: contain;
 }
 
-.app-container {
+.room-logo-container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 2.5rem;
+  margin-top: 2.5rem;
+
+}
+
+.room-logo-container img{
+   width: 100%;
+  max-width: 80px;
+  height: auto;
+  object-fit: contain;
+}
+
+.logo {
+  height: 60px;   /* change according to your need */
+  width: auto;
+}
+.auth-header h1 {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: #ffffff;
+  letter-spacing: -0.02em;
+  margin-bottom: 0.5rem;
+}
+
+.auth-header p {
+  font-size: 0.9rem;
+  color: #838383; /* Soft muted grey text */
+  line-height: 1.5;
+}
+
+.auth-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.input-group label {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #aaaaaa;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.room-input-wrapper {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.room-input-wrapper input {
+  flex: 1;
+  background-color: #000000;
+  border: 1px solid #222222;
+  border-radius: 6px;
+  color: #ffffff;
+  padding: 0.65rem 0.85rem;
+  font-size: 0.95rem;
+  font-family: inherit;
+}
+
+.room-input-wrapper input:focus {
+  outline: none;
+  border-color: #ffffff; /* Sharp white active boundary marker */
+}
+
+/* Stark Monochromatic Primary Action Controls */
+.primary-submit-btn {
+  background-color: #ff8b06;
+  color: #000000;
+  border: 1px solid #ffffff;
+  border-radius: 6px;
+  padding: 0.75rem;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.primary-submit-btn:hover {
+  background-color: #000000;
+  color: #ffffff;
+}
+
+.secondary-btn {
+  background-color: transparent;
+  color: #ffffff;
+  border: 1px solid #222222;
+  border-radius: 6px;
+  padding: 0.65rem 1rem;
+  font-size: 0.85rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.secondary-btn:hover {
+  background-color: #ff0101;
+  border-color: #ffffff;
+}
+
+/* --- MONOCHROME HEADER WORKSPACE --- */
+.app-workspace {
   display: flex;
   flex-direction: column;
   height: 100vh;
-  background-color: #1e1e1e;
-  color: white;
+  width: 100vw;
+  background-color: #000000;
 }
 
-.navbar {
+.workspace-header {
+  height: 75px;
+  background-color: #000000;
+  border-bottom: 1px solid #9d9d9d;
   display: flex;
+  align-items: center;
   justify-content: space-between;
-  padding: 10px 20px;
-  background: #2d2d2d;
-  border-bottom: 1px solid #444;
+  padding: 0 1.5rem;
+  z-index: 100;
+  gap: 1rem;
 }
 
-.main-content {
+.header-center {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
   flex: 1;
-  overflow: hidden; /* Prevents double scrollbars */
+  justify-content: center;
 }
 
-.editor-container {
-  height: 100%;
+.invite-btn {
+  background-color: #000000;
+  color: #ffffff;
+  border: 1px solid #ffffff;
+  padding: 0.35rem 0.75rem;
+  border-radius: 6px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.invite-btn:hover {
+  background-color: #ffffff;
+  color: #000000;
+}
+
+.connection-status {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.35rem 0.65rem;
+  border-radius: 6px;
+  border: 1px solid #444444;
+  background-color: #0a0a0a;
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.connection-status .status-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: #666666;
+}
+
+.connection-status.live .status-dot {
+  background-color: #4ade80;
+  box-shadow: 0 0 6px rgba(74, 222, 128, 0.6);
+}
+
+.connection-status.syncing .status-dot {
+  background-color: #ff8b06;
+  animation: pulse 1.2s ease-in-out infinite;
+}
+
+.connection-status.offline .status-dot {
+  background-color: #ef4444;
+}
+
+.connection-status.live .status-text { color: #4ade80; }
+.connection-status.syncing .status-text { color: #ff8b06; }
+.connection-status.offline .status-text { color: #ef4444; }
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}
+
+.peer-count {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.35rem 0.65rem;
+  border-radius: 6px;
+  border: 1px solid #ffffff;
+  background-color: #000000;
+  color: #ffffff;
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+
+.peer-icon {
+  font-size: 0.85rem;
+}
+
+.header-logout-btn {
+  background: none;
+  border: 1px solid #444444;
+  color: #aaaaaa;
+  padding: 0.35rem 0.65rem;
+  border-radius: 6px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  cursor: pointer;
+  margin-left: 0.5rem;
+  transition: all 0.2s;
+}
+
+.header-logout-btn:hover {
+  border-color: #ffffff;
+  color: #ffffff;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.brand .version {
+  font-size: 0.75rem;
+  font-weight: 400;
+  color: #8d8d8d;
+  margin-left: 0.25rem;
+  margin-top: 1.5rem;
+}
+
+.session-badge {
+  background-color: #ff8b06;
+  border: 1px solid #ffffff;
+  padding: 0.4rem 0.75rem;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.session-badge .label {
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: #000000;
+}
+
+.session-badge .value {
   font-family: 'Fira Code', monospace;
+  font-size: 0.8rem;
+  color: #000000;
+  font-weight: 600;
+  cursor: pointer;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.user-profile {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.user-name {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #ffffff;
+}
+
+/* Global Monochrome Scrollbars */
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+
+::-webkit-scrollbar-track {
+  background: #000000;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #222222;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #444444;
+}
+
+@media (max-width: 768px) {
+  .workspace-header {
+    padding: 0 1rem;
+    gap: 0.5rem;
   }
-  to {
-    transform: rotate(360deg);
+  .session-badge .label {
+    display: none;
+  }
+  .user-name {
+    display: none;
   }
 }
