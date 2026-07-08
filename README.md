@@ -71,7 +71,7 @@ This project currently executes submitted code **directly on the host machine wi
 ### Installation
 
 ```bash
-git clone https://github.com/<your-username>/<your-repo>.git
+git clone https://github.com/harshmahajan24/coRoom .git
 cd <your-repo>
 npm install
 ```
