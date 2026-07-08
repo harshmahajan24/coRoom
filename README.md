@@ -1,4 +1,4 @@
-# 🚪 CoRoom (CollabCode)
+# 🚪 CoRoom (Collaborative Code Editor)
 
 A real-time collaborative code editor — write, run, and debug code together in the same room, live, with your team or friends. Think Google Docs, but for code.
 
